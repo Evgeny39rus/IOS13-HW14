@@ -14,6 +14,10 @@
 		6F47D8B42C331CFC00604918 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 6F47D8B32C331CFC00604918 /* Base */; };
 		6F47D8BC2C34868C00604918 /* FlowLayoutExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F47D8BB2C34868C00604918 /* FlowLayoutExampleViewController.swift */; };
 		6F47D8BF2C34878600604918 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6F47D8BE2C34878600604918 /* SnapKit */; };
+		6F47D8C82C47AE0800604918 /* MyAlbumsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F47D8C72C47AE0800604918 /* MyAlbumsViewCell.swift */; };
+		6F47D8CA2C47B03100604918 /* HeaderSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F47D8C92C47B03100604918 /* HeaderSupplementaryView.swift */; };
+		6F47D8CC2C47B08300604918 /* Albums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F47D8CB2C47B08300604918 /* Albums.swift */; };
+		6F47D8CE2C47B0B300604918 /* OtherViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F47D8CD2C47B0B300604918 /* OtherViewControllers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +29,10 @@
 		6F47D8B32C331CFC00604918 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F47D8B52C331CFC00604918 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F47D8BB2C34868C00604918 /* FlowLayoutExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayoutExampleViewController.swift; sourceTree = "<group>"; };
+		6F47D8C72C47AE0800604918 /* MyAlbumsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlbumsViewCell.swift; sourceTree = "<group>"; };
+		6F47D8C92C47B03100604918 /* HeaderSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSupplementaryView.swift; sourceTree = "<group>"; };
+		6F47D8CB2C47B08300604918 /* Albums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Albums.swift; sourceTree = "<group>"; };
+		6F47D8CD2C47B0B300604918 /* OtherViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherViewControllers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,15 +66,59 @@
 		6F47D8A62C331CFA00604918 /* IOS13-HW14 */ = {
 			isa = PBXGroup;
 			children = (
-				6F47D8BB2C34868C00604918 /* FlowLayoutExampleViewController.swift */,
-				6F47D8AB2C331CFA00604918 /* ViewController.swift */,
-				6F47D8A72C331CFA00604918 /* AppDelegate.swift */,
-				6F47D8A92C331CFA00604918 /* SceneDelegate.swift */,
-				6F47D8B02C331CFC00604918 /* Assets.xcassets */,
-				6F47D8B22C331CFC00604918 /* LaunchScreen.storyboard */,
-				6F47D8B52C331CFC00604918 /* Info.plist */,
+				6F47D8C22C3EEFEB00604918 /* UI + Extension */,
+				6F47D8C62C47ADCB00604918 /* Cell */,
+				6F47D8C52C3EF03E00604918 /* Resource */,
+				6F47D8C42C3EF02D00604918 /* Source */,
+				6F47D8C32C3EF01700604918 /* App */,
 			);
 			path = "IOS13-HW14";
+			sourceTree = "<group>";
+		};
+		6F47D8C22C3EEFEB00604918 /* UI + Extension */ = {
+			isa = PBXGroup;
+			children = (
+				6F47D8CB2C47B08300604918 /* Albums.swift */,
+				6F47D8BB2C34868C00604918 /* FlowLayoutExampleViewController.swift */,
+				6F47D8AB2C331CFA00604918 /* ViewController.swift */,
+				6F47D8CD2C47B0B300604918 /* OtherViewControllers.swift */,
+			);
+			path = "UI + Extension";
+			sourceTree = "<group>";
+		};
+		6F47D8C32C3EF01700604918 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				6F47D8A72C331CFA00604918 /* AppDelegate.swift */,
+				6F47D8A92C331CFA00604918 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		6F47D8C42C3EF02D00604918 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				6F47D8B22C331CFC00604918 /* LaunchScreen.storyboard */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		6F47D8C52C3EF03E00604918 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				6F47D8B02C331CFC00604918 /* Assets.xcassets */,
+				6F47D8B52C331CFC00604918 /* Info.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		6F47D8C62C47ADCB00604918 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6F47D8C72C47AE0800604918 /* MyAlbumsViewCell.swift */,
+				6F47D8C92C47B03100604918 /* HeaderSupplementaryView.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,9 +198,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F47D8AC2C331CFA00604918 /* ViewController.swift in Sources */,
+				6F47D8CE2C47B0B300604918 /* OtherViewControllers.swift in Sources */,
 				6F47D8BC2C34868C00604918 /* FlowLayoutExampleViewController.swift in Sources */,
 				6F47D8A82C331CFA00604918 /* AppDelegate.swift in Sources */,
+				6F47D8C82C47AE0800604918 /* MyAlbumsViewCell.swift in Sources */,
+				6F47D8CC2C47B08300604918 /* Albums.swift in Sources */,
 				6F47D8AA2C331CFA00604918 /* SceneDelegate.swift in Sources */,
+				6F47D8CA2C47B03100604918 /* HeaderSupplementaryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
