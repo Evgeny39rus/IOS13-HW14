@@ -1,8 +1,7 @@
-//
-//  Listitem.swift
-//  IOS13-HW14
-//
-//  Created by Евгений Сушков on 17.07.2024.
-//
+import UIKit
 
-import Foundation
+struct Listitem {
+    let image: String
+    let title: String
+    let countFiles: String
+}
