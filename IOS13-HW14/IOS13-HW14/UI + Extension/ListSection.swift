@@ -1,19 +1,21 @@
 import UIKit
 
 enum ListSection {
-    case myAlbums([ListItem]) // -> 0
-    case peopleAndPlaces([ListItem]) // -> 1
-    case mediaTypes([ListItem]) // -> 2
-    case utilities([ListItem])
-    case places([Places])
+    case myAlbums([Listitem]) // -> 0
+    case peopleAndPlaces([Listitem]) // -> 1
+    case mediaTypes([Listitem]) // -> 2
+    case utilities([Listitem])
+    case places([places])
     
-    var items: [ListItem] {
+    var items: [Listitem] {
         switch self {
         case .myAlbums(let items),
              .peopleAndPlaces(let items),
              .mediaTypes(let items),
              .utilities(let items):
             return items
+        case .places(_):
+            <#code#>
         }
     }
     

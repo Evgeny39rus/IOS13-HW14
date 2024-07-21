@@ -1,21 +1,8 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
 import UIKit
 
 // Определение класса ячейки для отображения типов медиа
 class MediaTypesViewCell: UITableViewCell {
-    
+    static let identifier = "MediaTypesViewCell"
     // UI элементы
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
