@@ -171,26 +171,28 @@
 //        }
 //       
 //
+//
 import UIKit
 import SnapKit
 
 extension AlbumsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        sections.count
+        return MockData.shared.sections.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sections[section].items.count
+        return MockData.shared.sections[section].items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch sections[indexPath.section] {
+        let section = MockData.shared.sections[indexPath.section]
+        switch section {
         case .myAlbums(let myAlbums):
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyAlbumsViewCell.identifier, for: indexPath) as? MyAlbumsViewCell else {
                 return UICollectionViewCell()
             }
-            cell.configureCell(imageName: myAlbums[indexPath.row].image, title: myAlbums[indexPath.row].title, filesCount: myAlbums[indexPath.row].countFiles)
-            return cell
+//            cell.configureCell(imageName: myAlbums[indexPath.row].image, title: myAlbums[indexPath.row].title, filesCount: myAlbums[indexPath.row].countFiles)
+//            return cell
             
         case .peopleAndPlaces(let peopleAndPlaces):
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PeopleAndPlacesViewCell.identifier, for: indexPath) as? PeopleAndPlacesViewCell else {
@@ -212,6 +214,8 @@ extension AlbumsViewController: UICollectionViewDataSource, UICollectionViewDele
             }
             cell.configureCell(imageName: mediaTypes[indexPath.row].image, title: mediaTypes[indexPath.row].title, filesCount: mediaTypes[indexPath.row].countFiles)
             return cell
+        case .places(_):
+            <#code#>
         }
     }
     
@@ -219,7 +223,7 @@ extension AlbumsViewController: UICollectionViewDataSource, UICollectionViewDele
         switch kind {
         case UICollectionView.elementKindSectionHeader:
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderSupplementaryView.identifier, for: indexPath) as! HeaderSupplementaryView
-            header.configureHeader(categoryName: sections[indexPath.section].title)
+            header.configureHeader(categoryName: MockData.shared.sections[indexPath.section].title)
             return header
         default:
             return UICollectionReusableView()
@@ -229,9 +233,11 @@ extension AlbumsViewController: UICollectionViewDataSource, UICollectionViewDele
     // MARK: Create Layout
     
     func createLayout() -> UICollectionViewCompositionalLayout {
-        UICollectionViewCompositionalLayout { [weak self] sectionIndex, _ in
-            guard let self = self else { return nil }
-            let section = self.sections[sectionIndex]
+        return UICollectionViewCompositionalLayout { [weak self] sectionIndex, _ in
+            guard let self = self else {
+                return self?.createEmptySection() // Используем пустую секцию вместо nil
+            }
+            let section = MockData.shared.sections[sectionIndex]
             switch section {
             case .myAlbums(_):
                 return self.createMyAlbumsSections()
@@ -349,5 +355,15 @@ extension AlbumsViewController: UICollectionViewDataSource, UICollectionViewDele
         sectionLayout.boundarySupplementaryItems = [layoutSectionHeader]
         
         return sectionLayout
+    }
+
+    private func createEmptySection() -> NSCollectionLayoutSection {
+        // Создать и вернуть пустую секцию
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(1.0))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        return section
     }
 }

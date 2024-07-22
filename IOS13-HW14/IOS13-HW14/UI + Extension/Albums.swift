@@ -1,4 +1,5 @@
 //import UIKit
+//import SnapKit
 //
 //final class AlbumsViewController: UIViewController {
 //    
@@ -73,7 +74,7 @@ final class AlbumsViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(MediaTypesViewCell.self, forCellWithReuseIdentifier: MediaTypesViewCell.identifier)
-        // Регистрация других ячеек
+        collectionView.register(MyAlbumsViewCell.self,forCellWithReuseIdentifier: MyAlbumsViewCell.identifier)
         collectionView.collectionViewLayout = createLayout() // Убедитесь, что у вас есть метод createLayout()
         return collectionView
     }()

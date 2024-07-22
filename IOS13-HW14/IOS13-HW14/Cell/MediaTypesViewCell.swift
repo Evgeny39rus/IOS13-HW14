@@ -1,8 +1,71 @@
+//import UIKit
+//
+//// Определение класса ячейки для отображения типов медиа
+//class MediaTypesViewCell: UITableViewCell {
+//    static let identifier = "MediaTypesViewCell"
+//    // UI элементы
+//    private let iconImageView: UIImageView = {
+//        let imageView = UIImageView()
+//        imageView.contentMode = .scaleAspectFit
+//        return imageView
+//    }()
+//    
+//    private let typeNameLabel: UILabel = {
+//        let label = UILabel()
+//        label.textAlignment = .left
+//        label.font = UIFont.systemFont(ofSize: 16)
+//        return label
+//    }()
+//    
+//    // Инициализация
+//    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+//        super.init(style: style, reuseIdentifier: reuseIdentifier)
+//        setupViews()
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//    
+//    // Настройка вьюх
+//    private func setupViews() {
+//        addSubview(iconImageView)
+//        addSubview(typeNameLabel)
+//        
+//        iconImageView.translatesAutoresizingMaskIntoConstraints = false
+//        typeNameLabel.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        NSLayoutConstraint.activate([
+//            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+//            iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+//            iconImageView.widthAnchor.constraint(equalToConstant: 30),
+//            iconImageView.heightAnchor.constraint(equalToConstant: 30),
+//            
+//            typeNameLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 8),
+//            typeNameLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+//            typeNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+//        ])
+//    }
+//    
+//    // Конфигурация ячейки
+//    func configure(with mediaType: MediaType) {
+//        iconImageView.image = UIImage(named: mediaType.iconName)
+//        typeNameLabel.text = mediaType.name
+//    }
+//}
+//
+//// Модель для типа медиа
+//struct MediaType {
+//    let name: String
+//    let iconName: String
+//}
+//
 import UIKit
 
 // Определение класса ячейки для отображения типов медиа
-class MediaTypesViewCell: UITableViewCell {
+class MediaTypesViewCell: UICollectionViewCell {
     static let identifier = "MediaTypesViewCell"
+    
     // UI элементы
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
@@ -18,8 +81,8 @@ class MediaTypesViewCell: UITableViewCell {
     }()
     
     // Инициализация
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupViews()
     }
     
@@ -29,21 +92,21 @@ class MediaTypesViewCell: UITableViewCell {
     
     // Настройка вьюх
     private func setupViews() {
-        addSubview(iconImageView)
-        addSubview(typeNameLabel)
+        contentView.addSubview(iconImageView)
+        contentView.addSubview(typeNameLabel)
         
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
         typeNameLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             iconImageView.widthAnchor.constraint(equalToConstant: 30),
             iconImageView.heightAnchor.constraint(equalToConstant: 30),
             
             typeNameLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 8),
-            typeNameLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            typeNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+            typeNameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            typeNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
         ])
     }
     
@@ -59,4 +122,3 @@ struct MediaType {
     let name: String
     let iconName: String
 }
-
