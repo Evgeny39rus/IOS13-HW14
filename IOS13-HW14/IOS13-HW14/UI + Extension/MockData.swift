@@ -38,28 +38,28 @@ struct MockData {
     static let shared = MockData()
 
     let myAlbums: ListSection = .myAlbums([
-        ListItem(image: "recent", title: "Недавние", countFiles: "765"),
-        ListItem(image: "Instagram", title: "Instagram", countFiles: "54"),
+        Listitem(image: "recent", title: "Недавние", countFiles: "765"),
+        Listitem(image: "Instagram", title: "Instagram", countFiles: "54"),
         // Добавьте другие элементы по необходимости
     ])
 
     let peopleAndPlaces: ListSection = .peopleAndPlaces([
-        ListItem(image: "people", title: "Люди", countFiles: "12"),
-        ListItem(image: "place", title: "Места", countFiles: "315")
+        Listitem(image: "people", title: "Люди", countFiles: "12"),
+        Listitem(image: "place", title: "Места", countFiles: "315")
     ])
 
     let mediaTypes: ListSection = .mediaTypes([
-        ListItem(image: "video", title: "Видео", countFiles: "118"),
-        ListItem(image: "person.crop.square", title: "Селфи", countFiles: "45")
+        Listitem(image: "video", title: "Видео", countFiles: "118"),
+        Listitem(image: "person.crop.square", title: "Селфи", countFiles: "45")
     ])
 
     let utilities: ListSection = .utilities([
-        ListItem(image: "settings", title: "Настройки", countFiles: "34")
+        Listitem(image: "settings", title: "Настройки", countFiles: "34")
     ])
 
     let places: ListSection = .places([
-        Places(location: "Париж", description: "Город света", image: "paris"),
-        Places(location: "Лондон", description: "Город тумана", image: "london")
+        places(location: "Париж", description: "Город света", image: "paris"),
+        places(location: "Лондон", description: "Город тумана", image: "london")
     ])
 
     var sections: [ListSection] {

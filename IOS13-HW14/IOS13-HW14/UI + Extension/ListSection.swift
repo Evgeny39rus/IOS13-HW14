@@ -1,28 +1,27 @@
 import UIKit
 
 enum ListSection {
-    case myAlbums([Listitem]) // -> 0
-    case peopleAndPlaces([Listitem]) // -> 1
-    case mediaTypes([Listitem]) // -> 2
+    case myAlbums([Listitem])
+    case peopleAndPlaces([Listitem])
+    case mediaTypes([Listitem])
     case utilities([Listitem])
-    case places([places])
-    
+    case places([Listitem])
+
     var items: [Listitem] {
         switch self {
         case .myAlbums(let items),
              .peopleAndPlaces(let items),
              .mediaTypes(let items),
-             .utilities(let items):
+             .utilities(let items),
+             .places(let items):
             return items
-        case .places(_):
-            <#code#>
         }
     }
-    
+
     var count: Int {
         items.count
     }
-    
+
     var title: String {
         switch self {
         case .myAlbums(_):
@@ -33,7 +32,10 @@ enum ListSection {
             return "Типы медиа"
         case .utilities(_):
             return "Другое"
+        case .places(_):
+            return "Места"
         }
     }
 }
+
 
