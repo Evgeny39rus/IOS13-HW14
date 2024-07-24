@@ -1,18 +1,14 @@
 import UIKit
 
-// Определение класса ячейки для утилит
-class UtilitiesViewCell: UITableViewCell {
+final class UtilitiesViewCell: UICollectionViewCell {
+    static let identifier = "UtilitiesViewCell"
     
-    // UI элемент
-    private let utilityButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitleColor(.blue, for: .normal)
-        return button
-    }()
+    private let imageView = UIImageView()
+    private let titleLabel = UILabel()
+    private let filesCountLabel = UILabel()
     
-    // Инициализация
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupViews()
     }
     
@@ -20,27 +16,32 @@ class UtilitiesViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // Настройка вьюх
     private func setupViews() {
-        addSubview(utilityButton)
+        addSubview(imageView)
+        addSubview(titleLabel)
+        addSubview(filesCountLabel)
         
-        utilityButton.translatesAutoresizingMaskIntoConstraints = false
+        imageView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(imageView.snp.width)
+        }
         
-        NSLayoutConstraint.activate([
-            utilityButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            utilityButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            utilityButton.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            utilityButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
-        ])
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(imageView.snp.bottom).offset(8)
+            make.leading.trailing.equalToSuperview().inset(8)
+        }
+        
+        filesCountLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(4)
+            make.leading.trailing.equalToSuperview().inset(8)
+            make.bottom.equalToSuperview().offset(-8)
+        }
     }
     
-    // Конфигурация ячейки
-    func configure(with utility: Utility) {
-        utilityButton.setTitle(utility.name, for: .normal)
+    func configureCell(imageName: String, title: String, filesCount: Int) {
+        imageView.image = UIImage(named: imageName)
+        titleLabel.text = title
+        filesCountLabel.text = "Files: \(filesCount)"
     }
 }
 
-// Модель для утилиты
-struct Utility {
-    let name: String
-}

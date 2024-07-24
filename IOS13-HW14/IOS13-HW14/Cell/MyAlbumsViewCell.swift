@@ -29,5 +29,11 @@ final class MyAlbumsViewCell: UICollectionViewCell {
         let stack = UIStackView()
         return stack
     }()
+    
+    func configureCell(imageName: String, title: String, filesCount: String) {
+        albumsImage.image = UIImage(named: imageName)
+        albumsTitle.text = title
+        filesCountInAlbum.text = filesCount
+    }
 }
 

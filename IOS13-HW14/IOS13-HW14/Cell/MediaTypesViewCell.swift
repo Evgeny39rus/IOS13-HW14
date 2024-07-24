@@ -62,25 +62,13 @@
 //
 import UIKit
 
-// Определение класса ячейки для отображения типов медиа
 class MediaTypesViewCell: UICollectionViewCell {
     static let identifier = "MediaTypesViewCell"
     
-    // UI элементы
-    private let iconImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
+    private let imageView = UIImageView()
+    private let titleLabel = UILabel()
+    private let filesCountLabel = UILabel()
     
-    private let typeNameLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 16)
-        return label
-    }()
-    
-    // Инициализация
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -90,35 +78,31 @@ class MediaTypesViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // Настройка вьюх
     private func setupViews() {
-        contentView.addSubview(iconImageView)
-        contentView.addSubview(typeNameLabel)
+        addSubview(imageView)
+        addSubview(titleLabel)
+        addSubview(filesCountLabel)
         
-        iconImageView.translatesAutoresizingMaskIntoConstraints = false
-        typeNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        imageView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(imageView.snp.width)
+        }
         
-        NSLayoutConstraint.activate([
-            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            iconImageView.widthAnchor.constraint(equalToConstant: 30),
-            iconImageView.heightAnchor.constraint(equalToConstant: 30),
-            
-            typeNameLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 8),
-            typeNameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            typeNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
-        ])
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(imageView.snp.bottom).offset(8)
+            make.leading.trailing.equalToSuperview().inset(8)
+        }
+        
+        filesCountLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(4)
+            make.leading.trailing.equalToSuperview().inset(8)
+            make.bottom.equalToSuperview().offset(-8)
+        }
     }
     
-    // Конфигурация ячейки
-    func configure(with mediaType: MediaType) {
-        iconImageView.image = UIImage(named: mediaType.iconName)
-        typeNameLabel.text = mediaType.name
+    func configureCell(imageName: String, title: String, filesCount: Int) {
+        imageView.image = UIImage(named: imageName)
+        titleLabel.text = title
+        filesCountLabel.text = "Files: \(filesCount)"
     }
-}
-
-// Модель для типа медиа
-struct MediaType {
-    let name: String
-    let iconName: String
 }
