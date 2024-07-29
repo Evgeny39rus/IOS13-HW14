@@ -25,7 +25,8 @@ final class AlbumsViewController: UIViewController, UICollectionViewDelegate, UI
         collectionView.collectionViewLayout = createLayout()
         return collectionView
     }()
-    let sections = MockData.shared.pageData
+    
+   let sections = MockData.shared.sections
     
     
     
@@ -61,6 +62,7 @@ final class AlbumsViewController: UIViewController, UICollectionViewDelegate, UI
             $0.edges.equalTo(view)
         }
     }
+
 }
     
     //import UIKit

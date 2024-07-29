@@ -32,11 +32,24 @@ struct MockData {
         ])
     }()
     
+    private let places: ListSection = {
+        .places([
+            .init(image: "Lightroom", title: "Места", countFiles: "11")
+        ])
+    }()
+    
+    private let utilities: ListSection = {
+        .places([
+            .init(image: "cube", title: "Места", countFiles: "11")
+        ])
+    }()
+
+    
     let sections: [ListSection]
 
-      private init() {
-          sections = [myAlbums, peopleAndPlaces, mediaTypes]
-      }
+    private init() {
+        sections = [myAlbums, peopleAndPlaces, mediaTypes, places]
+    }
     
 }
 //import UIKit

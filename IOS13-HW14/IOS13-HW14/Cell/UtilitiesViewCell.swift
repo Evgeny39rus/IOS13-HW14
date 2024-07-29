@@ -38,7 +38,7 @@ final class UtilitiesViewCell: UICollectionViewCell {
         }
     }
     
-    func configureCell(imageName: String, title: String, filesCount: Int) {
+    func configureCell(imageName: String, title: String, filesCount: String) {
         imageView.image = UIImage(named: imageName)
         titleLabel.text = title
         filesCountLabel.text = "Files: \(filesCount)"

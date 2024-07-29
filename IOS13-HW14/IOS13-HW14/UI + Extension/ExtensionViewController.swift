@@ -34,7 +34,21 @@ extension AlbumsViewController {
                                filesCount: utilities[indexPath.row].countFiles)
             return cell
             
-        }
+        case .mediaTypes(let mediaTypes):
+           guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MediaTypesViewCell.identifier, for: indexPath) as? MediaTypesViewCell
+            else {return UICollectionViewCell() }
+           cell.configureCell(imageName: mediaTypes[indexPath.row].image,
+                              title: mediaTypes[indexPath.row].title,
+                              filesCount: mediaTypes[indexPath.row].countFiles)
+           return cell
+
+       case .places(let places):
+           guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PeopleAndPlacesViewCell.identifier, for: indexPath) as? PeopleAndPlacesViewCell else {
+               return UICollectionViewCell()
+           }
+           cell.configureCell(imageName: places[indexPath.row].image, title: places[indexPath.row].title, filesCount: places[indexPath.row].countFiles)
+           return cell
+       }
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -66,9 +80,12 @@ extension AlbumsViewController {
                 return self.createMediaTypesSections()
             case .utilities(_):
                 return self.createUtilitiesSections()
+            case .places(_):
+                return self.createPlacesSection()
             }
         }
     }
+    
     private func createMyAlbumsSections() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                               heightDimension: .fractionalHeight(1))
@@ -128,6 +145,7 @@ extension AlbumsViewController {
         
         return sectionLayout
     }
+    
     private func createMediaTypesSections() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                               heightDimension: .fractionalHeight(1))
@@ -150,6 +168,7 @@ extension AlbumsViewController {
         
         return sectionLayout
     }
+    
     private func createUtilitiesSections() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                               heightDimension: .fractionalHeight(1))
@@ -172,4 +191,29 @@ extension AlbumsViewController {
         
         return sectionLayout
     }
+    
+    private func createPlacesSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                              heightDimension: .fractionalHeight(1))
+        let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
+        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                               heightDimension: .absolute(40))
+        let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [layoutItem])
+        
+        let sectionLayout = NSCollectionLayoutSection(group: layoutGroup)
+        sectionLayout.contentInsets = NSDirectionalEdgeInsets(top: 17, leading: 17, bottom: 17, trailing: 17)
+        
+        let layoutSectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.93),
+                                                             heightDimension: .estimated(50))
+        let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: layoutSectionHeaderSize,
+                                                                              elementKind: UICollectionView.elementKindSectionHeader,
+                                                                              alignment: .top)
+        sectionLayout.boundarySupplementaryItems = [layoutSectionHeader]
+        
+        return sectionLayout
+    }
+
+    
 }
