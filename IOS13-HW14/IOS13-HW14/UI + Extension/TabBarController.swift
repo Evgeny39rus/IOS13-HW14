@@ -46,7 +46,9 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
        let controllers = [firstViewController, secondViewController, albumsViewController, fourthViewController]
         self.setViewControllers(controllers, animated: true)
     }
-    func tabBarController(tabBarController: UITabBarController, shouldSelect viewController: UIViewController)-> Bool{
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController)-> Bool{
         return true
     }
+    
 }
+

@@ -33,7 +33,7 @@ final class AlbumsViewController: UIViewController, UICollectionViewDelegate, UI
     // MARK: Lifecycle
     
     override func viewDidLoad() {
-        viewDidLoad()
+      //  viewDidLoad()
         setupAlbumsBar()
         setupViews()
         setupLayout()
@@ -42,7 +42,7 @@ final class AlbumsViewController: UIViewController, UICollectionViewDelegate, UI
     // MARK: Setup
     
     func setupAlbumsBar() {
-        let title = "Альбомы"
+        _ = "Альбомы"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.setLeftBarButton(UIBarButtonItem(
             title: nil,
@@ -64,53 +64,3 @@ final class AlbumsViewController: UIViewController, UICollectionViewDelegate, UI
     }
 
 }
-    
-    //import UIKit
-    //import SnapKit
-    //
-    //final class AlbumsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    //
-    //
-    //    // MARK: UI
-    //    private lazy var collectionView: UICollectionView = {
-    //        let layout = UICollectionViewFlowLayout() // Используйте UICollectionViewFlowLayout для начальной настройки
-    //        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    //        collectionView.backgroundColor = .none
-    //        collectionView.bounces = true
-    //        collectionView.delegate = self
-    //        collectionView.dataSource = self
-    //        collectionView.register(MediaTypesViewCell.self, forCellWithReuseIdentifier: MediaTypesViewCell.identifier)
-    //        collectionView.register(MyAlbumsViewCell.self,forCellWithReuseIdentifier: MyAlbumsViewCell.identifier)
-    //        collectionView.collectionViewLayout = createLayout() // Убедитесь, что у вас есть метод createLayout()
-    //        return collectionView
-    //    }()
-    //
-    //    let sections = MockData.shared.self // Определите тип данных
-    //
-    //    override func viewDidLoad() {
-    //        super.viewDidLoad()
-    //        setupAlbumsBar()
-    //        setupViews()
-    //        setupLayout()
-    //    }
-    //
-    //    func setupAlbumsBar() {
-    //        title = "Альбомы"
-    //        navigationController?.navigationBar.prefersLargeTitles = true
-    //        navigationItem.setLeftBarButton(UIBarButtonItem(title: nil, image: UIImage(systemName: "plus"), primaryAction: UIAction(handler: {_ in self.dismiss(animated: true)}), menu: nil), animated: true)
-    //    }
-    //
-    //    private func setupViews() {
-    //        view.backgroundColor = .white
-    //        view.addSubview(collectionView)
-    //    }
-    //
-    //    private func setupLayout() {
-    //        collectionView.snp.makeConstraints {
-    //            $0.top.equalTo(additionalSafeAreaInsets)
-    //            $0.edges.equalTo(view)
-    //        }
-    //
-    //        // MARK: - Additional methods like createLayout()
-    //    }
-    //}
